@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: kyle-prestashop
+    env: php
+    plan: free
+    buildCommand: |
+      curl -sS https://getcomposer.org/installer | php
+      php composer.phar install
+    startCommand: "php -S 0.0.0.0:10000 -t public"
+    envVars:
+      - key: DB_HOST
+        value: your-database-host
+      - key: DB_USER
+        value: your-database-user
+      - key: DB_PASS
+        value: your-database-password
+      - key: DB_NAME
+        value: your-database-name
